@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h1>{{ product.name }}</h1>
+
+    <div class="product">
+        <img src="{{ product.photo_url }}" alt="{{ product.name }}">
+        <div class="product-info">
+            <div>{{ product.description|truncatewords:30 }}</div>
+            <div class="card-date">Добавлен: {{ product.created_at|date:"d.m.Y" }}</div>
+            <div>
+                {% for order in orders %}
+                    <span class="tag">{{ order.title }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="buy">
+        <span class="buy-title">Купить {{ product.name }}</span>
+        <div>
+            <span class="price">{{ product.cost }} ₽</span>
+            {% if product.bought %}
+                <button class="button" disabled>Куплено</button>
+            {% else %}
+                <form method="post" action="/product/{{ product.id }}/buy/">
+                    {% csrf_token %}
+                    <button class="button">Купить</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="columns">
+        <div>
+            <h2>Об этом товаре</h2>
+            {{ product.description|linebreaks }}
+        </div>
+
+        <div>
+            <h2>Продавцы</h2>
+            {% for order in orders %}
+                <div class="seller">
+                    <div class="seller-name">{{ order.title }}</div>
+                    {{ order.description|linebreaks }}
+                </div>
+            {% empty %}
+                <div class="empty">Продавцов пока нет</div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

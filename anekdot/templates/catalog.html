@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h2>Все товары</h2>
+
+    <div class="cards">
+        {% for product in products %}
+            <a class="card" href="/product/{{ product.id }}/">
+                <img src="{{ product.photo_url }}" alt="{{ product.name }}">
+                <div class="card-body">
+                    <p class="card-name">{{ product.name }}</p>
+                    {% for order in product.orders.all %}
+                        <span class="tag">{{ order.title }}</span>
+                    {% endfor %}
+                    <p class="card-date">{{ product.description|truncatewords:12 }}</p>
+                    <span class="price">{{ product.cost }} ₽</span>
+                </div>
+            </a>
+        {% empty %}
+            <div class="empty">Товаров пока нет</div>
+        {% endfor %}
+    </div>
+{% endblock %}

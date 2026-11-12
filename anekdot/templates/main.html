@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUKUSHKA</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(#1b2838, #171d25 600px);
+            background-color: #171d25;
+            color: #c7d5e0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        header {
+            background: #171a21;
+        }
+
+        header .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            height: 90px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 24px;
+        }
+
+        .menu a {
+            color: #dcdedf;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .menu a:hover {
+            color: #66c0f4;
+        }
+
+        .store-bar {
+            display: flex;
+            gap: 4px;
+            margin-top: 24px;
+            padding: 4px;
+            background: linear-gradient(90deg, #3e6796, #3a78b1, #0f216e);
+        }
+
+        .store-bar a {
+            padding: 6px 14px;
+            color: #e5e5e5;
+        }
+
+        .store-bar a:hover {
+            background: white;
+            color: black;
+        }
+
+        main {
+            flex: 1;
+            padding: 28px 0 60px;
+        }
+
+        h1 {
+            margin: 0 0 16px;
+            color: white;
+            font-size: 26px;
+            font-weight: normal;
+        }
+
+        h2 {
+            margin: 0 0 12px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #3b6e8c;
+            color: white;
+            font-size: 14px;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: #16202d;
+            box-shadow: 0 0 8px black;
+        }
+
+        .card:hover {
+            background: #2a475e;
+        }
+
+        .card img {
+            height: 160px;
+        }
+
+        .card-body {
+            padding: 12px;
+        }
+
+        .card-name {
+            margin: 0 0 8px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .card-date {
+            margin: 8px 0;
+            color: #8f98a0;
+            font-size: 12px;
+        }
+
+        .tag {
+            display: inline-block;
+            margin: 0 4px 4px 0;
+            padding: 2px 7px;
+            background: #1d3a50;
+            color: #66c0f4;
+            font-size: 11px;
+        }
+
+        .price {
+            display: inline-block;
+            padding: 4px 8px;
+            background: black;
+            color: #beee11;
+            font-size: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 8px 18px;
+            background: linear-gradient(90deg, #75b022, #588a1b);
+            color: #d2efa9;
+            font-family: inherit;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            color: white;
+        }
+
+        form {
+            display: inline;
+        }
+
+        .button:disabled {
+            background: #5c6670;
+            color: #a0a8b0;
+            cursor: default;
+        }
+
+        .empty {
+            padding: 40px;
+            background: #16202d;
+            color: #8f98a0;
+            text-align: center;
+        }
+
+        .product {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 16px;
+            padding: 16px;
+            background: #0f1922;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .buy {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 24px 0;
+            padding: 18px;
+            background: #4c6b7a;
+        }
+
+        .buy-title {
+            color: white;
+            font-size: 20px;
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+
+        .seller {
+            margin-bottom: 6px;
+            padding: 10px;
+            background: #16202d;
+        }
+
+        .seller-name {
+            color: white;
+            font-weight: bold;
+        }
+
+        footer {
+            padding: 24px 0;
+            background: #171a21;
+            color: #8f98a0;
+            font-size: 12px;
+        }
+
+        @media (max-width: 700px) {
+            header .container {
+                flex-direction: column;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .product,
+            .columns {
+                grid-template-columns: 1fr;
+            }
+
+            .buy {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a class="logo" href="/product/">KUKUSHKA</a>
+            <div class="menu">
+                <a href="/product/">Магазин</a>
+                <a href="/product/time">Новинки</a>
+                <a href="/admin/">Админка</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="store-bar">
+            <a href="/product/">Все товары</a>
+            <a href="/product/time">Новинки недели</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Down squad 2026. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

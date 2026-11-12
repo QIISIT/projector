@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h2>Новые товары за неделю</h2>
+
+    <div class="cards">
+        {% for product in products %}
+            <a class="card" href="/product/{{ product.id }}/">
+                <img src="{{ product.photo_url }}" alt="{{ product.name }}">
+                <div class="card-body">
+                    <p class="card-name">{{ product.name }}</p>
+                    {% for order in product.orders.all %}
+                        <span class="tag">{{ order.title }}</span>
+                    {% endfor %}
+                    <p class="card-date">Добавлен: {{ product.created_at|date:"d.m.Y H:i" }}</p>
+                    <span class="price">{{ product.cost }} ₽</span>
+                </div>
+            </a>
+        {% empty %}
+            <div class="empty">За неделю новых товаров не было</div>
+        {% endfor %}
+    </div>
+{% endblock %}
